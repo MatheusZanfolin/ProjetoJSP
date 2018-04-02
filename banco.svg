@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="banco.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.5"
+     inkscape:cx="519.82016"
+     inkscape:cy="794.00338"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1440"
+     inkscape:window-height="838"
+     inkscape:window-x="1432"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.02711916;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect4760"
+       width="53.854805"
+       height="1.8708867"
+       x="45.502636"
+       y="179.26776" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:arial;-inkscape-font-specification:'arial Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="47.333435"
+       y="103.03582"
+       id="text4781"><tspan
+         sodipodi:role="line"
+         id="tspan4779"
+         x="47.333435"
+         y="112.5688"
+         style="stroke-width:0.26458332" /></text>
+    <g
+       id="g825"
+       onclick="onBancoClick(this);">
+      <path
+         sodipodi:nodetypes="ccccccccccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path8476"
+         d="m 15.172191,42.301503 v -2.154447 l 2.372981,-0.009 2.372982,-0.009 0.0084,-3.06236 0.0056,-3.64212 0.0028,-0.47856 h 2.099955 2.099953 v 0.75938 3.36979 3.07084 h 2.38125 2.38125 v 2.154677 2.15468 h -6.86263 -6.86263 z"
+         style="fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.12661298;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
+      <path
+         sodipodi:nodetypes="ccccccscsscccccccccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4773"
+         d="M 13.05016,34.434976 H 6.1709926 v -8.33438 -8.33437 h 2.087397 2.0873984 l 0.09889,-2.84427 c 0.09089,-2.61416 0.175952,-3.00622 1.051372,-4.845967 3.531484,-7.4216001 13.007571,-9.11904014 18.825681,-3.3722101 2.408505,2.379 3.622673,5.6158871 3.628512,9.6733771 l 0.002,1.38907 h 1.984375 2.362351 l 0.04319,16.66875 z m 20.637499,-6.21771 v -1.98438 H 22.045992 10.404326 v 1.98438 1.98437 h 11.641666 11.641667 z m 4.497916,-1.98438 v 1.98438 1.98437 z"
+         style="fill:#aa0000;stroke-width:0.26458332" />
+      <text
+         id="text4777"
+         y="20.157192"
+         x="21.715723"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:8.86398315px;line-height:1.25;font-family:arial;-inkscape-font-specification:'arial Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.22159958"
+         xml:space="preserve"><tspan
+           style="text-align:center;text-anchor:middle;fill:#f9f9f9;stroke-width:0.22159958"
+           y="20.157192"
+           x="21.715723"
+           id="tspan4775"
+           sodipodi:role="line">15</tspan></text>
+      <rect
+         y="26.232883"
+         x="10.404325"
+         height="3.96875"
+         width="23.283333"
+         id="rect8478"
+         style="fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.37543964px;line-height:1.25;font-family:arial;-inkscape-font-specification:'arial Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.18438599"
+       x="1.0583338"
+       y="74.266647"
+       id="text829"><tspan
+         sodipodi:role="line"
+         id="tspan827"
+         x="1.0583338"
+         y="74.266647"
+         style="stroke-width:0.18438599">function onBancoClick(ev){</tspan><tspan
+         sodipodi:role="line"
+         x="1.0583338"
+         y="83.485947"
+         style="stroke-width:0.18438599"
+         id="tspan831">  var id = ev.id;</tspan><tspan
+         sodipodi:role="line"
+         x="1.0583338"
+         y="92.705246"
+         style="stroke-width:0.18438599"
+         id="tspan833">  var tspan = document.querySelector(&quot;#&quot; + id + &quot; tspan&quot;);</tspan><tspan
+         sodipodi:role="line"
+         x="1.0583338"
+         y="101.92455"
+         style="stroke-width:0.18438599"
+         id="tspan835">  console.log(tspan);</tspan><tspan
+         sodipodi:role="line"
+         x="1.0583338"
+         y="111.14384"
+         style="stroke-width:0.18438599"
+         id="tspan837">}</tspan></text>
+  </g>
+</svg>
