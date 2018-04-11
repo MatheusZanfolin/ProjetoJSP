@@ -12,7 +12,7 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <title>Ingressos</title>
+    <title>Cadastro</title>
     <style>
         .card{
             margin: 20pt;
@@ -22,10 +22,39 @@
             background-color: #32383e;
         }
     </style>
-</head>
+    <script>
+        const containers = [
+            "container-pessoal",
+            "container-endereco",
+            "container-conta",
+        ];
 
-<body>
-    <div class="card">
+        let contador = 0;
+
+        anterior = () => {
+            if (contador > 0){
+                contador --;
+            }
+            mudarPagina();
+        }
+        proximo = () => {
+            if (contador < (containers.length - 1)){
+                contador ++;
+            }
+            mudarPagina();
+        }
+
+        mudarPagina = () => {
+            for (i = 0; i < containers.length; i++){
+                document.getElementById(containers[i]).style.display = 
+                    i == contador ? 'block' : 'none';
+            }
+        }
+
+    </script>
+</head>
+<body onload="mudarPagina();">
+    <div  id="container-pessoal" class="card">
         <div class="card-header">
             Dados pessoais
         </div>
@@ -64,72 +93,99 @@
                 </div>
                 <div class="row">
                     <div class="col-sm">
-                        <label for="">CPF</label>
-                        <input type="text" class="form-control" id=""/>
+                        <label for="">Data de Nascimento*</label>
+                        <input type="date" class="form-control" id=""/>
                     </div>
                     <div class="col-sm">
-                        <label for="">CPF</label>
-                        <input type="text" class="form-control" id=""/>
-                    </div>
-                    <div class="col-sm">
-                        <label for="">CPF</label>
-                        <input type="text" class="form-control" id=""/>
+                        <label for="">Telefone*</label>
+                        <input type="number"  class="form-control" id=""/>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm">
-                        <label for="">CPF</label>
-                        <input type="text" class="form-control" id=""/>
-                    </div>
-                    <div class="col-sm">
-                        <label for="">CPF</label>
-                        <input type="text" class="form-control" id=""/>
-                    </div>
-                    <div class="col-sm">
-                        <label for="">CPF</label>
-                        <input type="text" class="form-control" id=""/>
-                    </div>
+                <br/>
+                <div class="row container">
+                    <button type="button" onclick="anterior()" class="btn btn-dark" disabled>Anterior</button>&nbsp
+                    <button type="button" onclick="proximo()" class="btn btn-dark">Próximo</button>
                 </div>
-                <div class="row">
-                    <div class="col-sm">
-                        <label for="">CPF</label>
-                        <input type="text" class="form-control" id=""/>
-                    </div>
-                    <div class="col-sm">
-                        <label for="">CPF</label>
-                        <input type="text" class="form-control" id=""/>
-                    </div>
-                    <div class="col-sm">
-                        <label for="">CPF</label>
-                        <input type="text" class="form-control" id=""/>
-                    </div>
-                </div>              
             </div>
         </div>
     </div>
-    
-
-    <div class="card">
+    <div id="container-endereco" class="card">
         <div class="card-header">
-            <span class="number-title">3</span> - Escolha o horário
+            Dados do Endereço
         </div>
         <div class="card-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm">
-                            <label for="">CPF</label>
-                            <input type="text" class="form-control" id=""/>
-                        </div>
-                        <div class="col-sm">
-                            <label for="">CPF</label>
-                            <input type="text" class="form-control" id=""/>
-                        </div>
-                        <div class="col-sm">
-                            <label for="">CPF</label>
-                            <input type="text" class="form-control" id=""/>
-                        </div>
-                    </div>                
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl">
+                        <label for="">CEP*</label>
+                        <input type="text" class="form-control" id=""/>
+                    </div>
+                    <div class="col-md">
+                        <label for="">Endereço*</label>
+                        <input type="text" class="form-control" id=""/>
+                    </div>
+                    <div class="col-sm">
+                        <label for="">Número*</label>
+                        <input type="number"  class="form-control" id=""/>
+                    </div>
+                    <div class="col-xl">
+                        <label for="">Complemento</label>
+                        <input type="text" class="form-control" id=""/>
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="">Bairro*</label>
+                        <input type="text" class="form-control" id=""/>
+                    </div>
+                    <div class="col">
+                        <label for="">Cidade*</label>
+                        <input type="text" class="form-control" id=""/>
+                    </div>
+                    <div class="col">
+                        <label for="estado">Estado*</label>
+                        <select id="estado" class="form-control">
+                            <option>São Paulo</option>
+                            <option>Mato Grosso</option>
+                            <option>Bahia</option>
+                        </select>
+                    </div>
+                </div>   
+                <br/>
+                <div class="row container">
+                    <button type="button" onclick="anterior()" class="btn btn-dark">Anterior</button>&nbsp
+                    <button type="button" onclick="proximo()" class="btn btn-dark">Próximo</button>
+                </div>                         
+            </div>
+        </div>
+    </div>
+
+    <div id="container-conta" class="card">
+        <div class="card-header">
+            Dados da conta
+        </div>
+        <div class="card-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl">
+                        <label for="">Email*</label>
+                        <input type="email" class="form-control" id=""/>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Senha*</label>
+                        <input type="password" class="form-control" id=""/>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Confirmar senha*</label>
+                        <input type="password" class="form-control" id=""/>
+                    </div>
+                </div> 
+                <br/>
+                <div class="row container">
+                    <button type="button" onclick="anterior()" class="btn btn-dark">Anterior</button>&nbsp
+                    <button type="button" onclick="proximo()" class="btn btn-dark">Finalizar</button>
+                </div>               
+            </div>
         </div>
     </div>
 </body>
