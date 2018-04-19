@@ -11,9 +11,13 @@ package web;
  */
 public class Pessoa {
     private String nome = "";
+    private int idade;
     
-    public Pessoa(){
-        
+    public Pessoa(){}
+    
+    public Pessoa (String nome, int idade){
+        this.nome = nome;
+        this.idade = idade;
     }
     
     public Pessoa(String nome){
@@ -25,10 +29,6 @@ public class Pessoa {
                parceiro.nome.substring(nome.length() /2 );
        
        return new Pessoa(nomeFilho);
-    }
-    
-    public void salvar(){
-        System.out.println("salvar");
     }
 
     public String getNome() {
