@@ -34,16 +34,19 @@
                     console.log(element);
                     console.log(element.className.baseVal)
                     element.className.baseVal = "assento " + assentos[num];
-
                 }
                 
                // console.log(num);
             });
         }
         function onBancoClick(e){
-            var assentoSelecionado = e.querySelectorAll("text tspan")[0].innerHTML;
-
-            console.log(e.querySelectorAll("text tspan")[0].innerHTML);
+            var disponivel = e.className.baseVal.includes("assento-disponivel");
+            if (disponivel){
+                var assentoNum = e.querySelectorAll("text tspan")[0];    
+            }
+            
+            
+            console.log(disponivel);
         }
     </script>
 </head>
