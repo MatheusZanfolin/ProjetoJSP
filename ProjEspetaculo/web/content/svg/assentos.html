@@ -31,8 +31,6 @@
             document.querySelectorAll(".assento").forEach(element => {
                 var num = element.querySelectorAll("text tspan")[0].innerHTML;
                 if (assentos[num] != undefined){
-                    console.log(element);
-                    console.log(element.className.baseVal)
                     element.className.baseVal = "assento " + assentos[num];
                 }
                 
@@ -40,19 +38,24 @@
             });
         }
         function onBancoClick(e){
-            var disponivel = e.className.baseVal.includes("assento-disponivel");
-            if (disponivel){
-                var assentoNum = e.querySelectorAll("text tspan")[0];    
+            var classe = e.className.baseVal;
+
+            if (classe.includes("assento-disponivel")){
+                var assentoNum = e.querySelectorAll("text tspan")[0].innerHTML;    
+                assentos[assentoNum] = "assento-selecionado";
+            }
+            else if (classe.includes("assento-selecionado")){
+                var assentoNum = e.querySelectorAll("text tspan")[0].innerHTML;    
+                assentos[assentoNum] = "assento-disponivel";
             }
             
-            
-            console.log(disponivel);
+            atualizarTela();
         }
     </script>
 </head>
 <body onload="atualizarTela()">
-    <div style=" width:800px">
-        <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="auto" height="auto" viewBox="0 0 350 350" version="1.1" id="svg3875" inkscape:version="0.92.3 (2405546, 2018-03-11)" sodipodi:docname="banco-apenas.svg">
+    <div style=" width:800px; background-color:#1f1f1f">
+        <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="auto" height="auto" viewBox="0 0 360 215" version="1.1" id="svg3875" inkscape:version="0.92.3 (2405546, 2018-03-11)" sodipodi:docname="banco-apenas.svg">
             
             <defs id="defs3869"/>
             <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="0.5" inkscape:cx="1005.5938" inkscape:cy="613.55559" inkscape:document-units="mm" inkscape:current-layer="g825-0" showgrid="false" inkscape:window-width="1600" inkscape:window-height="838" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1"/>
@@ -97,10 +100,10 @@
                 <path class="assento-fill" style="stroke-width:0.26458332" d="m 141.56206,34.434975 h -6.87916 v -8.334379 -8.33437 h 2.08739 2.0874 l 0.0989,-2.84427 c 0.0909,-2.61416 0.17595,-3.00622 1.05137,-4.845967 3.53149,-7.4216 13.00758,-9.11904 18.82569,-3.37221 2.4085,2.379 3.62267,5.615887 3.62851,9.673377 l 0.002,1.38907 h 1.98437 2.36235 l 0.0432,16.668749 z m 20.6375,-6.217709 v -1.98438 H 150.5579 138.91623 v 1.98438 1.984371 h 11.64167 11.64166 z m 4.49792,-1.98438 v 1.98438 1.984371 z" id="path4773-1-0" inkscape:connector-curvature="0" sodipodi:nodetypes="ccccccscsscccccccccccccccccc"/>
                 <text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:8.86398411px;line-height:1.25;font-family:arial;-inkscape-font-specification:'arial Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.22159958" x="150.22763" y="20.157194" id="text4777-1-4"><tspan sodipodi:role="line" id="tspan4775-7-0" x="150.22763" y="20.157194" class="assento-numero" style="text-align:center;text-anchor:middle;fill:#f9f9f9;stroke-width:0.22159958">6</tspan></text>
                 <rect style="fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" id="rect8478-0-43" width="23.283333" height="3.96875" x="138.91624" y="26.232885"/>
-                </g>
-                <path sodipodi:nodetypes="ccccccscsscccccccccccccccccc" inkscape:connector-curvature="0" id="path4773-1-6-2" d="m 173.69004,34.434975 h -6.87917 v -8.334379 -8.33437 h 2.0874 2.0874 l 0.0989,-2.84427 c 0.0909,-2.61416 0.17595,-3.00622 1.05137,-4.845967 3.53149,-7.421601 13.00757,-9.119041 18.82568,-3.37221 2.40851,2.379 3.62267,5.615887 3.62852,9.673377 l 0.002,1.38907 h 1.98437 2.36235 l 0.0432,16.668749 z m 20.6375,-6.217709 v -1.98438 h -11.64167 -11.64166 v 1.98438 1.984371 h 11.64166 11.64167 z m 4.49792,-1.98438 v 1.98438 1.984371 z" class="assento-fill" style="stroke-width:0.26458332"/>
+                </g>                
                 <g id="g4382" onclick="onBancoClick(this);" class="assento assento-disponivel">
                 <path style="fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.12661298;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="m 175.81207,42.301503 v -2.154446 l 2.37298,-0.009 2.37298,-0.009 0.008,-3.062361 0.006,-3.64212 0.003,-0.47856 h 2.09996 2.09995 v 0.759381 3.369789 3.070839 h 2.38125 2.38125 v 2.154679 2.15468 h -6.86263 -6.86263 z" id="path8476-0-5-2" inkscape:connector-curvature="0" sodipodi:nodetypes="ccccccccccccccccccc"/>
+                <path sodipodi:nodetypes="ccccccscsscccccccccccccccccc" inkscape:connector-curvature="0" id="path4773-1-6-2" d="m 173.69004,34.434975 h -6.87917 v -8.334379 -8.33437 h 2.0874 2.0874 l 0.0989,-2.84427 c 0.0909,-2.61416 0.17595,-3.00622 1.05137,-4.845967 3.53149,-7.421601 13.00757,-9.119041 18.82568,-3.37221 2.40851,2.379 3.62267,5.615887 3.62852,9.673377 l 0.002,1.38907 h 1.98437 2.36235 l 0.0432,16.668749 z m 20.6375,-6.217709 v -1.98438 h -11.64167 -11.64166 v 1.98438 1.984371 h 11.64166 11.64167 z m 4.49792,-1.98438 v 1.98438 1.984371 z" class="assento-fill" style="stroke-width:0.26458332"/>
                 <text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:8.86398411px;line-height:1.25;font-family:arial;-inkscape-font-specification:'arial Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.22159958" x="182.35562" y="20.157194" id="text4777-1-7-9"><tspan sodipodi:role="line" id="tspan4775-7-7-4" x="182.35562" y="20.157194" class="assento-numero" style="text-align:center;text-anchor:middle;fill:#f9f9f9;stroke-width:0.22159958">7</tspan></text>
                 <rect style="fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" id="rect8478-0-0-8" width="23.283333" height="3.96875" x="171.04422" y="26.232885"/>
                 </g>
