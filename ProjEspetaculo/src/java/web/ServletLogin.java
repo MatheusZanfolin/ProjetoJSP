@@ -37,6 +37,7 @@ public class ServletLogin extends HttpServlet {
             url = "content/jsp/cadastro.jsp";
         } else if ("entrar".equals(operation)){
             url = "content/jsp/index.jsp";
+            request.setAttribute("passo", 0);
         }
         else {
             url = "content/jsp/login.jsp";

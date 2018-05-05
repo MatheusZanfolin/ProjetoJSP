@@ -1,0 +1,13 @@
+body{
+    background-color: #dddddd;
+}
+.card{
+    margin: auto;
+    margin-top: 20pt;
+    max-width: 800px;
+}
+.card-header{
+    color: whitesmoke;
+    background-color: #32383e;
+    font-weight: bold;
+}
