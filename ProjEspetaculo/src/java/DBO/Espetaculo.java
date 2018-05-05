@@ -26,7 +26,7 @@ public class Espetaculo implements Cloneable, Comparable<Espetaculo> {
             throw new Exception("Espetaculo: inicializa√ß√£o com nome nulo.");
         
         if (classificacao < 10)
-            throw new Exception("Espetaculo: inicializaÁ„o com classificaÁ„o indicativa inv·lida");
+            throw new Exception("Espetaculo: inicializa√ß√£o com classific√£o indicativa inv√°lida");
         
         if (datasApresentacao == null)
             throw new Exception("Espetaculo: inicializa√ß√£o com datas de espet√°culo nulas.");

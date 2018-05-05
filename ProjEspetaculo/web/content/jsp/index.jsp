@@ -1,3 +1,10 @@
+<%-- 
+    Document   : index.jsp
+    Created on : 05/05/2018, 11:27:01
+    Author     : Work
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,17 +22,49 @@
     <title>Ingressos</title>
     <style>
         .card{
-            margin: 20pt;
+            margin: auto;
+            margin-top: 20pt;
+            max-width: 800px;
         }
         .card-header{
             color: whitesmoke;
             background-color: #32383e;
         }
     </style>
+    <script>
+        const containers = [
+            "container-espetaculo",
+            "container-data",
+            "container-horario",
+            "container-ingresso"
+        ];
+
+        let contador = 0;
+
+        anterior = () => {
+            if (contador > 0){
+                contador --;
+            }
+            mudarPagina();
+        };
+        proximo = () => {
+            if (contador < (containers.length - 1)){
+                contador ++;
+            }
+            mudarPagina();
+        };
+
+        mudarPagina = () => {
+            for (i = 0; i < containers.length; i++){
+                document.getElementById(containers[i]).style.display = 
+                    i === contador ? 'block' : 'none';
+            }
+        };
+    </script>
 </head>
 
-<body>
-    <div class="card">
+<body onload="mudarPagina()">
+    <div class="card" id="container-espetaculo">
         <div class="card-header">
             <span class="number-title">1</span>- Escolha uma Espetáculo
         </div>
@@ -35,19 +74,30 @@
                 <option>ALICE NO PAÍS DAS MARAVILHAS, LIVRE</option>
                 <option>O QUEBRA NOZES, 10 ANOS</option>
             </select>
+            <br/>
+            <div class="row container">
+                <button type="button" onclick="anterior()" class="btn btn-dark" disabled>Anterior</button>&nbsp
+                <button type="button" onclick="proximo()" class="btn btn-dark">Próximo</button>
+            </div>  
         </div>
+
     </div>
     
     </div>
-    <div class="card">
+    <div class="card" id="container-data">
         <div class="card-header">
             <span class="number-title">2</span> - Escolha uma data abraixo
         </div>
         <div class="card-body">
             <input  class="form-control" type="date" />
+            <br/>
+            <div class="row container">
+                <button type="button" onclick="anterior()" class="btn btn-dark">Anterior</button>&nbsp
+                <button type="button" onclick="proximo()" class="btn btn-dark">Próximo</button>
+            </div> 
         </div>
     </div>
-    <div class="card">
+    <div class="card"  id="container-horario">
         <div class="card-header">
             <span class="number-title">3</span> - Escolha o horário
         </div>
@@ -60,9 +110,14 @@
                 <input name="horario2" class="form-check-input" type="radio" value="14/04/2018 19:00 SAB" />
                 <label class="form-check-label" for="horario2">14/04/2018 21:00 SAB</label>
             </div>
-        </div>
+            <br/>
+            <div class="row container">
+                <button type="button" onclick="anterior()" class="btn btn-dark">Anterior</button>&nbsp
+                <button type="button" onclick="proximo()" class="btn btn-dark">Próximo</button>
+            </div> 
+        </div> 
     </div>
-    <div class="card">
+<!--    <div class="card">
         <div class="card-header">
             <span class="number-title">4</span> - Escolha o setor
         </div>
@@ -73,10 +128,10 @@
                 <option>MEZANINO</option>
             </select>
         </div>
-    </div>
-    <div class="card">
+    </div> -->
+    <div class="card"  id="container-ingresso">
         <div class="card-header">
-            <span class="number-title">5</span> - Escolha a quantidade de ingressos
+            <span class="number-title">4</span> - Escolha a quantidade de ingressos
         </div>
         <div class="card-body">
             <div>
@@ -109,22 +164,12 @@
                     </tr>
                 </tbody>
             </table>
-            <input type="button" class="btn btn-default" value="SELECIONAR ASSENTOS">
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            <span class="number-title">6</span> - Escolha seu assento
-        </div>
-        <div class="card-body">
-            TODO
-            <div>
-                <div style="width: 100%; text-align: center; background-color:#808080">
-                    PALCO
-                </div>
-            </div>
-        </div>
+            
+            <div class="row container">
+                <button type="button" onclick="anterior()" class="btn btn-dark">Anterior</button>&nbsp
+                <button type="submit" class="btn btn-dark">Selecionar Assentos</button>
+            </div> 
+        </div> 
     </div>
 </body>
-
 </html>

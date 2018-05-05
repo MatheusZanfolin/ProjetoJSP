@@ -1,3 +1,10 @@
+<%-- 
+    Document   : login.jsp
+    Created on : 05/05/2018, 11:27:11
+    Author     : Work
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,7 +134,7 @@ span.psw {
 <body>
 
 <div id="id01" class="modal">
-  <form class="modal-content animate" action="/action_page.php">
+    <form class="modal-content animate" action="/ProjEspetaculo/ServletLogin" method="POST">
     <div class="container">
       <label for="uname"><b>Usuário</b></label>
       <input type="text" placeholder="Digite seu usuário" name="uname" required>
@@ -138,8 +145,9 @@ span.psw {
     </div>
 
     <div class="container container-button" >
-      <a><button type="button" class="cancelbtn">Voltar</button></a>
-      <a></a><button type="submit"  class="loginbtn">Entrar</button></a>
+     <!-- <button type="button" class="cancelbtn">Voltar</button>-->
+      <button type="submit" class="loginbtn" name="operation" value="entrar">Entrar</button>
+      <button type="submit" style="color:#111111; background-color: #dddddd" name="operation" value="cadastrar">Cadastrar</button>
     </div>
   </form>
 </div>

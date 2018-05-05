@@ -1,3 +1,10 @@
+<%-- 
+    Document   : cadastro.jsp
+    Created on : 05/05/2018, 11:26:35
+    Author     : Work
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
