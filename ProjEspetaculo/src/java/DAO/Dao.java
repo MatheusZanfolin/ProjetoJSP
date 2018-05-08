@@ -16,9 +16,42 @@ import java.sql.SQLException;
  * @author u16189
  */
 public class Dao {
-    protected Connection conn;
-    protected PreparedStatement  cmd;
+    protected static Connection conn;
+    protected static PreparedStatement  cmd;
     private boolean preparado;
+    
+    private final static int ERRO_DE_DRIVER  = -1;
+    private final static int ERRO_DE_CONEXAO = -2;
+    private final static int ERRO_DE_AUTO_COMMIT = -3;
+    
+    static {
+        try
+        {
+            Class.forName ("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        }
+        catch (ClassNotFoundException e)
+        {
+            System.exit(ERRO_DE_DRIVER);
+        }
+
+        try
+        {
+            conn = DriverManager.getConnection ("jdbc:sqlserver://regulus:1433;databasename=JSP1RB16189", "JSP1RB16189", "JSP1RB16189");
+        }
+        catch (SQLException e)
+        {
+            System.exit(ERRO_DE_CONEXAO);
+        }
+        
+        try
+        {
+            conn.setAutoCommit(true);
+        }
+        catch (SQLException e)
+        {
+            System.exit(ERRO_DE_AUTO_COMMIT);
+        }
+    }
 
     public Dao () throws Exception
     {
@@ -33,7 +66,7 @@ public class Dao {
 
         try
         {
-            conn = DriverManager.getConnection ("jdbc:sqlserver://regulus:1433;databasename=bdjsp", "JSP1RB16189", "JSP1RB16189");
+            conn = DriverManager.getConnection ("jdbc:sqlserver://regulus:1433;databasename=JSP1RB16189", "JSP1RB16189", "JSP1RB16189");
         }
         catch (SQLException e)
         {
