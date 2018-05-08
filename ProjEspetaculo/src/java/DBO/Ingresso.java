@@ -58,7 +58,7 @@ public class Ingresso {
         this.dataEmissao = dataEmissao;
     }
 
-    public Espectador getEspectador() {
+    public Espectador getEspectador() throws Exception {
         return new Espectador(espectador);
     }
 
@@ -92,5 +92,9 @@ public class Ingresso {
             default:
                 return 35;
         }
+    }
+    
+    public String toString() {
+        return this.espectador + "(" + this.tipo.toString()  + ")";
     }
 }

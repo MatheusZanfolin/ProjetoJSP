@@ -13,50 +13,27 @@ import java.util.Map;
  *
  * @author u16189
  */
-public class Assento {
+public class Assento implements Comparable<Assento> {
     private int codAssento;
-    private Setor setor;
     private Map<Timestamp, Boolean> ocupado;
     
-    public Assento(int codAssento, Setor s, Map<Timestamp, Boolean> ocupado) throws Exception{
+    public Assento(int codAssento, Map<Timestamp, Boolean> ocupado) throws Exception{
         if (codAssento < 1)
             throw new Exception("Assento: inicialização com código inválido.");
-        
-        if (s == null)
-            throw new Exception("Assento: inicialização com setor nulo.");
         
         if (ocupado == null)
             throw new Exception("Assento: inicialização com indicações de ocupação nulas.");
         
         this.codAssento = codAssento;
-        this.setor      = s;
         this.ocupado    = new HashMap<>(ocupado);
     }
 
     public int getCodAssento() {
         return codAssento;
     }
-
-    public Setor getSetor() throws Exception {
-        return new Setor(this.setor);
-    }
     
     public boolean isOcupado(Timestamp data) {
         return this.ocupado.get(data);
-    }
-    
-    public void setCodAssento(int codAssento) throws Exception {
-        if (codAssento < 1)
-            throw new Exception("Assento: código inválido.");
-        
-        this.codAssento = codAssento;
-    }
-    
-    public void setSetor(Setor s) throws Exception {
-        if (s == null)
-            throw new Exception("Assento: inicialização com setor nulo.");
-        
-        this.setor = new Setor(s);
     }
 
     @Override
@@ -75,9 +52,20 @@ public class Assento {
         if (a.codAssento != this.codAssento)
             return false;
         
-        if (!a.setor.equals(this.setor))
+        if (!a.ocupado.equals(this.ocupado))
             return false;
         
         return true;
+    }
+
+    @Override
+    public int compareTo(Assento outro) {
+        return this.codAssento - outro.codAssento; 
+    }
+    
+    
+    @Override
+    public String toString() {
+        return "Assento nº" + this.codAssento;
     }
 }
