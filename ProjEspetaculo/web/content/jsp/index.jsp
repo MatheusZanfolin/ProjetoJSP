@@ -78,7 +78,7 @@
         </div>
         <div class="card" id="container-data">
             <div class="card-header">
-                <span class="number-title">2</span> - Escolha uma data abraixo
+                <span class="number-title">2</span> - Escolha uma data abaixo
             </div>
             <div class="card-body">
                 <input  class="form-control" type="date" />
