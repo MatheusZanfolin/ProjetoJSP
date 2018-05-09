@@ -1,3 +1,10 @@
+<%-- 
+    Document   : cadastro.jsp
+    Created on : 05/05/2018, 11:26:35
+    Author     : Work
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,6 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/ProjEspetaculo/content/css/comum.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -13,15 +21,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <title>Cadastro</title>
-    <style>
-        .card{
-            margin: 20pt;
-        }
-        .card-header{
-            color: whitesmoke;
-            background-color: #32383e;
-        }
-    </style>
+
     <script>
         const containers = [
             "container-pessoal",
@@ -50,7 +50,6 @@
                     i == contador ? 'block' : 'none';
             }
         }
-
     </script>
 </head>
 <body onload="mudarPagina();">
@@ -63,26 +62,24 @@
                 <div class="row">
                     <div class="col-md">
                         <label for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome"/>
+                        <input type="text" class="form-control" id="nome" name="nome"/>
                     </div>
                     <div class="col-sm">
                         <label for="pais">País*</label>
-                        <select id="pais" class="form-control">
+                        <select id="pais" name="pais" class="form-control">
                             <option>Brasil</option>
-                            <option>Argentina</option>
-                            <option>Uruguai</option>
                         </select>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm">
                         <label for="">CPF</label>
-                        <input type="text" class="form-control" id=""/>
+                        <input type="text" class="form-control" id="" name="cpf"/>
                     </div>
                     <div class="col-sm">
                         <label for="">Sexo</label><br/>
                         <div class="form-check" style="display:inline-block">
-                            <input name="" class="form-check-input" type="radio" value="M" />
+                            <input name="sexo" class="form-check-input" type="radio" value="M" />
                             <label class="form-check-label" for="">Masculino</label>
                         </div>
                         <div class="form-check" style="display:inline-block">
@@ -94,11 +91,11 @@
                 <div class="row">
                     <div class="col-sm">
                         <label for="">Data de Nascimento*</label>
-                        <input type="date" class="form-control" id=""/>
+                        <input type="date"  name="dtNascimento" class="form-control" id=""/>
                     </div>
                     <div class="col-sm">
                         <label for="">Telefone*</label>
-                        <input type="number"  class="form-control" id=""/>
+                        <input type="number"  name="telefone" class="form-control" id=""/>
                     </div>
                 </div>
                 <br/>
@@ -118,33 +115,33 @@
                 <div class="row">
                     <div class="col-xl">
                         <label for="">CEP*</label>
-                        <input type="text" class="form-control" id=""/>
+                        <input type="text" class="form-control" id=""  name="cep"/>
                     </div>
                     <div class="col-md">
                         <label for="">Endereço*</label>
-                        <input type="text" class="form-control" id=""/>
+                        <input type="text" class="form-control" id=""  name="endereco"/>
                     </div>
                     <div class="col-sm">
                         <label for="">Número*</label>
-                        <input type="number"  class="form-control" id=""/>
+                        <input type="number"  class="form-control" id=""  name="numero"/>
                     </div>
                     <div class="col-xl">
                         <label for="">Complemento</label>
-                        <input type="text" class="form-control" id=""/>
+                        <input type="text" class="form-control" id=""  name="complemento"/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <label for="">Bairro*</label>
-                        <input type="text" class="form-control" id=""/>
+                        <input type="text" class="form-control" id="" name="bairo"/>
                     </div>
                     <div class="col">
                         <label for="">Cidade*</label>
-                        <input type="text" class="form-control" id=""/>
+                        <input type="text" class="form-control" id="" name="cidade"/>
                     </div>
                     <div class="col">
                         <label for="estado">Estado*</label>
-                        <select id="estado" class="form-control">
+                        <select id="estado" class="form-control" name="estados">
                             <option>São Paulo</option>
                             <option>Mato Grosso</option>
                             <option>Bahia</option>
@@ -169,15 +166,15 @@
                 <div class="row">
                     <div class="col-xl">
                         <label for="">Email*</label>
-                        <input type="email" class="form-control" id=""/>
+                        <input type="email" class="form-control" id="" name="email"/>
                     </div>
                     <div class="col-md-6">
                         <label for="">Senha*</label>
-                        <input type="password" class="form-control" id=""/>
+                        <input type="password" class="form-control" id="" name="senha"/>
                     </div>
                     <div class="col-md-6">
                         <label for="">Confirmar senha*</label>
-                        <input type="password" class="form-control" id=""/>
+                        <input type="password" class="form-control" id="" name="confirmacaoSenha"/>
                     </div>
                 </div> 
                 <br/>
