@@ -13,6 +13,7 @@ import DBO.Assento;
 import DBO.Espectador;
 import DBO.Espetaculo;
 import DBO.Estado;
+import java.sql.Date;
 import java.util.ArrayList;
 
 /**
@@ -52,6 +53,19 @@ public class BancoDeDados {
             boolean cadastrado = Espectadores.isCadastrado("joao");
             
             System.out.println("João " + (cadastrado ? "está cadastrado" : "não está cadastrado"));
+            
+            String nome = "Tadeu-Antes-Ele-Do-Que-Eu";
+            
+            int resultado = Espectadores.inserirEspectador(
+                    new Espectador(
+                            "tadeu@ntes.ele", "tadeu", nome, "123.456.787/12", new Date(System.currentTimeMillis() + 1), true, 
+                            "1234-5678", "12345", "Rua dos bobos", "0", "Não tinha teto, nem nada", 
+                            "Cidade dos bobos", "Bairro dos bobos", Estados.getEstados().get(0)));
+            
+            if (resultado > 0)
+                System.out.println(nome + " foi inserido com sucesso! :)");
+            else
+                System.out.println(nome + " não foi inserido com sucesso! :(");
         } catch (Exception e) {
             e.printStackTrace();
             
