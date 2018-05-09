@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import web.crud.Login;
 
 /**
  *
@@ -30,21 +31,8 @@ public class ServletLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String operation = request.getParameter("operation");
-        String url = "";
-        
-        if ("cadastrar".equals(operation)){
-            url = "content/jsp/cadastro.jsp";
-        } else if ("entrar".equals(operation)){
-            url = "content/jsp/index.jsp";
-            request.setAttribute("passo", 0);
-        }
-        else {
-            url = "content/jsp/login.jsp";
-        }
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-        dispatcher.forward(request, response);        
+        Login login = new Login(request, response);
+        login.execute(request.getParameter("operation"));      
     }
 
     /**
