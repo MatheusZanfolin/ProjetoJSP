@@ -6,9 +6,11 @@
 package teste;
 
 import DAO.Assentos;
+import DAO.Espectadores;
 import DAO.Espetaculos;
 import DAO.Estados;
 import DBO.Assento;
+import DBO.Espectador;
 import DBO.Espetaculo;
 import DBO.Estado;
 import java.util.ArrayList;
@@ -22,27 +24,34 @@ public class BancoDeDados {
         try {
             ArrayList<Estado> estados = Estados.getEstados();
             
-            for (Estado estado : estados) {
+            estados.forEach((estado) -> {
                 System.out.println(estado);
-            }
+            });
             
             System.out.println();
             System.out.println();
             
             ArrayList<Espetaculo> espetaculos = Espetaculos.getEspetaculos();
             
-            for (Espetaculo espetaculo : espetaculos) {
+            espetaculos.forEach((espetaculo) -> {
                 System.out.println(espetaculo);
-            }
+            });
             
             System.out.println();
             System.out.println();
             
             ArrayList<Assento> assentos = Assentos.getAssentos();
             
-            for (Assento assento : assentos) {
+            assentos.forEach((assento) -> {
                 System.out.println(assento);
-            }
+            });
+            
+            System.out.println();
+            System.out.println();
+            
+            boolean cadastrado = Espectadores.isCadastrado("joao");
+            
+            System.out.println("João " + (cadastrado ? "está cadastrado" : "não está cadastrado"));
         } catch (Exception e) {
             e.printStackTrace();
             

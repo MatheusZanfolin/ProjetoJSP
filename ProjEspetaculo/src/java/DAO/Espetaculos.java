@@ -47,7 +47,7 @@ public class Espetaculos extends Dao {
         ResultSet rs = cmd.executeQuery();
         
         while (rs.next())
-            datas.add(rs.getTimestamp("data"));
+            datas.add(rs.getTimestamp("dataEspetaculo"));
         
         return datas;
     }

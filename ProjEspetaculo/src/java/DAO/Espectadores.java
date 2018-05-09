@@ -45,7 +45,7 @@ public class Espectadores extends Dao {
         return cmd.executeUpdate();
     }
     
-    public boolean isCadastrado(String email) throws SQLException {
+    public static boolean isCadastrado(String email) throws SQLException {
         if (email == null)
             return false;
         

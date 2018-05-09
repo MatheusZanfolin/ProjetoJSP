@@ -22,14 +22,14 @@ public class Ingressos extends Dao {
         super();
     }
     
-    public static int registrarIngresso(String emailEspectador, Timestamp dataEspetaculo, TipoIngresso tipo, Timestamp dataEmissao) throws SQLException {
-        cmd = conn.prepareStatement("TODO");
+    public static int registrarIngresso(String emailEspectador, Timestamp dataEspetaculo, TipoIngresso tipo) throws SQLException {
+        CallableStatement procedimento = conn.prepareCall("{call compraIngresso_sp(?,?,?)}");
         
-        CallableStatement c = conn.prepareCall("");
+        procedimento.setString(1, emailEspectador);
+        procedimento.setTimestamp(2, dataEspetaculo);
+        procedimento.setInt(3, tipo.getCodTipo());
         
-        // TODO
-        
-        return cmd.executeUpdate();
+        return procedimento.executeUpdate();
     }
     
     public static int quantosIngressos(Timestamp dataApresentacao) throws Exception {
