@@ -5,8 +5,8 @@
  */
 package DBO;
 
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,9 +16,9 @@ public class Espetaculo implements Cloneable, Comparable<Espetaculo> {
     private int         codEspetaculo;
     private String      nome;
     private int         classificacao;
-    private Timestamp[] datasApresentacao;
+    private ArrayList<Timestamp> datasApresentacao;
     
-    public Espetaculo(int codEspetaculo, String nome, int classificacao, Timestamp[] datasApresentacao) throws Exception {
+    public Espetaculo(int codEspetaculo, String nome, int classificacao, ArrayList<Timestamp> datasApresentacao) throws Exception {
         if (codEspetaculo < 1)
             throw new Exception("Espetaculo: inicialização com código de estado inválido.");
         
@@ -26,7 +26,7 @@ public class Espetaculo implements Cloneable, Comparable<Espetaculo> {
             throw new Exception("Espetaculo: inicialização com nome nulo.");
         
         if (classificacao < 10)
-            throw new Exception("Espetaculo: inicializa��o com classifica��o indicativa inv�lida");
+            throw new Exception("Espetaculo: inicializa��o com classifica��o indicativa inv�lida");
         
         if (datasApresentacao == null)
             throw new Exception("Espetaculo: inicialização com datas de espetáculo nulas.");
@@ -67,7 +67,7 @@ public class Espetaculo implements Cloneable, Comparable<Espetaculo> {
         this.classificacao = classificacao;
     }
     
-    public void setDatasApresentacao(Timestamp[] datasApresentacao) throws Exception {
+    public void setDatasApresentacao(ArrayList<Timestamp> datasApresentacao) throws Exception {
         if (datasApresentacao == null)
             throw new Exception("Espetaculo: datas de espetáculo nulas.");
         
@@ -86,7 +86,7 @@ public class Espetaculo implements Cloneable, Comparable<Espetaculo> {
         return this.classificacao;
     }
     
-    public Timestamp[] getDatasApresentacao() {
+    public ArrayList<Timestamp> getDatasApresentacao() {
         return this.datasApresentacao;
     }
     
@@ -117,5 +117,9 @@ public class Espetaculo implements Cloneable, Comparable<Espetaculo> {
     @Override
     public int compareTo(Espetaculo outro) {
         return this.codEspetaculo - outro.codEspetaculo;
+    }
+    
+    public String toString() {
+        return this.nome;
     }
 }

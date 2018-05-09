@@ -10,9 +10,19 @@ package DBO;
  * @author u16189
  */
 public enum TipoIngresso {
-    Inteira,
-    Estudante,
-    Idoso,
-    DoadorSangue,
-    Jornalista
+    Inteira     (1),
+    Idoso       (2),
+    Estudante   (3),    
+    DoadorSangue(4),
+    Jornalista  (5);
+   
+    int codTipo;
+            
+    TipoIngresso(int codTipo) {
+        this.codTipo = codTipo;
+    }
+    
+    public int getCodTipo() {
+        return this.codTipo;
+    }
 }

@@ -1,6 +1,7 @@
+/*
 package web;
 
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 import web.Cadastro;
 // Import required java libraries
 import java.io.*;
@@ -31,14 +32,14 @@ public class CadastroServlet extends HttpServlet {
       atributo = atributo == null ? "" : atributo;
 
       // converte para o objeto java
-      cadastro = new Gson().fromJson(atributo,  Cadastro.class);
+      //cadastro = new Gson().fromJson(atributo,  Cadastro.class);
 
       // executa a regra de negócio
-      cadastro = Cadastro.executar(cadastro, operacao);
+      //cadastro = Cadastro.executar(cadastro, operacao);
 
       // setta o gerenciador no attributo da requisição em formado de uma string json
-      String ret = new Gson().toJson(cadastro);
-      request.setAttribute("cadastro", ret);
+      //String ret = new Gson().toJson(cadastro);
+      //request.setAttribute("cadastro", ret);
       
       // manda para o jsp
       RequestDispatcher dispatcher = request.getRequestDispatcher("/content/cadastroPessoa.jsp");
@@ -50,3 +51,4 @@ public class CadastroServlet extends HttpServlet {
        doPost(request, response);
    }
 }
+*/

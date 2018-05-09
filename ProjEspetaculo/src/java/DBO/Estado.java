@@ -80,4 +80,9 @@ public class Estado implements Cloneable, Comparable<Estado> {
     public int compareTo(Estado outro) {
         return this.codEstado - outro.codEstado;
     }
+    
+    @Override
+    public String toString() {
+        return this.nome;
+    }
 }
