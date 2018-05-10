@@ -5,8 +5,6 @@
  */
 package web.crud;
 
-import com.google.gson.Gson;
-import java.sql.Timestamp;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import web.beans.CadastroBean;
@@ -16,16 +14,19 @@ import web.beans.CadastroBean;
  * @author Work
  */
 public class Cadastro extends Crud{
-    CadastroBean bean;
+    CadastroBean bean = new CadastroBean();;
     
     public Cadastro(HttpServletRequest request, HttpServletResponse response){
         super(request, response);
-        bean = new CadastroBean();
         mountBean(bean);
+    }
+    
+    public void salvar(){
+        System.out.println("salvei " + bean);
     }
 
     @Override
     public void saidaPadrao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("olá mundo");
     }
 }

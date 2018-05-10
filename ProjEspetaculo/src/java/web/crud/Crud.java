@@ -11,9 +11,11 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -46,20 +48,20 @@ public abstract class Crud {
        try{
         Class<?> classe = bean.getClass();
         Field[] fields = classe.getDeclaredFields();
-
+        Gson gson = new Gson();   
+        
         for (Field field : fields){
-            if (field.getName().equals("nomes")){
-                String s;
-                s = "";
-            }
-            if (field.getType().isInstance(ArrayList.class) || field.getType().isArray()){
-                Gson gson = new Gson();
+            if (field.getType().isArray()){
                 String[] req = request.getParameterMap().get(field.getName());
-     
-                field.set(bean, gson.fromJson(req.toString(), field.getType()));            
+                field.set(bean, gson.fromJson(gson.toJson(req), field.getType()));            
+            }
+            else if(field.getType().isPrimitive()){
+                String req = request.getParameter(field.getName());  
+                Object value = gson.fromJson(req, field.getType());
+                if (value != null)
+                    field.set(bean, value);
             }
             else{
-                Gson gson = new Gson();
                 String req = request.getParameter(field.getName());        
                 field.set(bean, gson.fromJson(req, field.getType()));
             }

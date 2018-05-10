@@ -6,13 +6,14 @@
 package web.beans;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author u14187
  */
 public class CadastroBean {
-        public String[] nomes = {};
+    public String[] nomes;
     public String nome = "";
     public String pais = "";
     public String cpf = "";
@@ -29,5 +30,12 @@ public class CadastroBean {
     public String email = "";
     public String senha = "";
     public String confirmacaoSenha = "";   
+
+    @Override
+    public String toString() {
+        return "" + "nomes=" + nomes + ", nome=" + nome + ", pais=" + pais + ", cpf=" + cpf + ", dtNascimento=" + dtNascimento + ", sexo=" + sexo + ", telefone=" + telefone + ", cep=" + cep + ", endereco=" + endereco + ", numero=" + numero + ", complemento=" + complemento + ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", email=" + email + ", senha=" + senha + ", confirmacaoSenha=" + confirmacaoSenha + "";
+    }
+    
+    
 
 }
