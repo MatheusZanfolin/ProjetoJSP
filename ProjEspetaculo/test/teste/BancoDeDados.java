@@ -9,10 +9,12 @@ import DAO.Assentos;
 import DAO.Espectadores;
 import DAO.Espetaculos;
 import DAO.Estados;
+import DAO.Ingressos;
 import DBO.Assento;
 import DBO.Espectador;
 import DBO.Espetaculo;
 import DBO.Estado;
+import DBO.TipoIngresso;
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -54,6 +56,18 @@ public class BancoDeDados {
             
             System.out.println("João " + (cadastrado ? "está cadastrado" : "não está cadastrado"));
             
+            System.out.println();
+            System.out.println();
+            
+            Espectador tadeu;
+            
+            tadeu = new Espectador("tadeu@ntes.ele", "tadeu", "Tadeu-Antes-Ele-Do-Que-Eu", "123.456.787/12", new Date(System.currentTimeMillis() + 1), true, "1234-5678", "12345", "Rua dos bobos", "0", "Não tinha teto, nem nada",  "Cidade dos bobos", "Bairro dos bobos", Estados.getEstados().get(0));
+            
+            int registrado = Ingressos.registrarIngresso(tadeu.getEmail(), Espetaculos.getEspetaculos().get(0).getDatasApresentacao().get(0), TipoIngresso.Inteira);
+            
+            System.out.println("Tadeu " + (registrado <= 0 ? "não " : "") + "comprou um ingresso!");
+            
+            /*
             String nome = "Tadeu-Antes-Ele-Do-Que-Eu";
             
             int resultado = Espectadores.inserirEspectador(
@@ -66,6 +80,9 @@ public class BancoDeDados {
                 System.out.println(nome + " foi inserido com sucesso! :)");
             else
                 System.out.println(nome + " não foi inserido com sucesso! :(");
+            */
+            
+            
         } catch (Exception e) {
             e.printStackTrace();
             
