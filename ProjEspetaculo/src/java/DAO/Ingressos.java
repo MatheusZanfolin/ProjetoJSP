@@ -17,17 +17,19 @@ import java.sql.Timestamp;
  */
 public class Ingressos extends Dao {
     private final static String QUANTOS_INGRESSOS = "SELECT qtde FROM QtdeIngressoApresentacao WHERE dataEspetaculo = ?";
+    private final static String COMPRAR_INGRESSO  = "{call compraIngresso_sp(?, ?, ?, ?)}";
     
     public Ingressos() throws Exception {
         super();
     }
     
-    public static int registrarIngresso(String emailEspectador, Timestamp dataEspetaculo, TipoIngresso tipo) throws SQLException {
-        CallableStatement procedimento = conn.prepareCall("{call compraIngresso_sp(?,?,?)}");
+    public static int registrarIngresso(String emailEspectador, Timestamp dataEspetaculo, TipoIngresso tipo, int codAssento) throws SQLException {
+        CallableStatement procedimento = conn.prepareCall(COMPRAR_INGRESSO);
         
         procedimento.setString(1, emailEspectador);
         procedimento.setTimestamp(2, dataEspetaculo);
         procedimento.setInt(3, tipo.getCodTipo());
+        procedimento.setInt(4, codAssento);
         
         return procedimento.executeUpdate();
     }
