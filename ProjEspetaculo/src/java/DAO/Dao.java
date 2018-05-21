@@ -29,16 +29,16 @@ public class Dao {
         {
             Class.forName ("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         }
-        catch (ClassNotFoundException e)
+        catch (Exception e)
         {
             System.exit(ERRO_DE_DRIVER);
         }
 
         try
         {
-            conn = DriverManager.getConnection ("jdbc:sqlserver://regulus:1433;databasename=JSP1RB16189", "JSP1RB16189", "JSP1RB16189");
+            conn = DriverManager.getConnection ("jdbc:sqlserver://regulus.cotuca.unicamp.br:1433;databasename=JSP1RB16189", "JSP1RB16189", "JSP1RB16189");
         }
-        catch (SQLException e)
+        catch (Exception e)
         {
             System.exit(ERRO_DE_CONEXAO);
         }
@@ -47,7 +47,7 @@ public class Dao {
         {
             conn.setAutoCommit(true);
         }
-        catch (SQLException e)
+        catch (Exception e)
         {
             System.exit(ERRO_DE_AUTO_COMMIT);
         }

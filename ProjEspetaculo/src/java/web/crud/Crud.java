@@ -5,19 +5,10 @@
  */
 package web.crud;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.stream.Stream;
+
+import java.lang.reflect.Method;
+import java.sql.Date;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -33,55 +24,73 @@ public abstract class Crud {
         this.request = req;
         this.response = resp;
     }
+    
+    protected String paramString(String nome){
+        String valor = request.getParameter(nome);
+        return valor == null ? "" : valor;
+    }
+    
+    protected int paramInt(String nome){
+        try{
+            String valor = request.getParameter(nome);
+            valor = valor == null ? "" : valor;
+            int ret = Integer.valueOf(valor);
+            return ret;
+        }catch(NumberFormatException ne){
+            return 0;
+        }
+    }
+    
+    protected Date paramDate(String nome){
+        String valor = request.getParameter(nome);
+        return valor == null ? null : Date.valueOf(valor);
+    }
+    
+    protected char paramChar(String nome){
+        String valor = request.getParameter(nome);
+        return valor == null ? ' ' : (valor.length() == 0 ? ' ' : valor.charAt(0));
+    }
     public HttpServletRequest getRequest() {
         return request;
     }
     
     public void encaminhar(String url){
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+
         try {  
-            dispatcher.forward(request, response);
+            dispatcher.include(request, response);
+
         } catch(Exception e){
         }
     }
-    public <T> T mountBean(T bean){
-       try{
-        Class<?> classe = bean.getClass();
-        Field[] fields = classe.getDeclaredFields();
-        Gson gson = new Gson();   
-        
-        for (Field field : fields){
-            if (field.getType().isArray()){
-                String[] req = request.getParameterMap().get(field.getName());
-                field.set(bean, gson.fromJson(gson.toJson(req), field.getType()));            
-            }
-            else if(field.getType().isPrimitive()){
-                String req = request.getParameter(field.getName());  
-                Object value = gson.fromJson(req, field.getType());
-                if (value != null)
-                    field.set(bean, value);
+      
+    public void execute(String nomeMetodo){
+        Method metodo = null;
+        try {
+            if (nomeMetodo != null){
+                metodo = getClass().getMethod(nomeMetodo);
             }
             else{
-                String req = request.getParameter(field.getName());        
-                field.set(bean, gson.fromJson(req, field.getType()));
+                throw new Exception();
             }
-        }
-       }catch(Exception e){
-           System.err.println(e.getMessage());
-       } 
-       return bean;
-    }
-    
-    
-    public void execute(String nomeMetodo){
-        try {
-            getClass().getMethod(nomeMetodo).invoke(this);
         } catch (Exception ex) {
-            saidaPadrao();
-        }         
+            saidaPadrao(null);
+        }
+        
+        try {
+            if (metodo != null){
+                metodo.invoke(this);
+            }
+            else{
+                throw new Exception("Erro Interno");
+            }
+        } catch (Exception e){
+            saidaPadrao(e);
+        }
+        
     }
     
-    public abstract void saidaPadrao();
+    public abstract void saidaPadrao(Exception ex);
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;

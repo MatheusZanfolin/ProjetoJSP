@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class Espectadores extends Dao {
     private final static String INSERIR_ESPECTADOR = "INSERT INTO Espectador VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    private final static String VERIFICA_USUARIO   = "SELECT * FROM Espectador WHERE email = ?";
+    private final static String VERIFICA_USUARIO   = "SELECT * FROM Espectador WHERE email = ? and senha = ?";
     
     public Espectadores() throws Exception {
         super();
@@ -45,7 +45,7 @@ public class Espectadores extends Dao {
         return cmd.executeUpdate();
     }
     
-    public static boolean isCadastrado(String email) throws SQLException {
+    public static boolean isCadastrado(String email, String senha) throws SQLException {
         if (email == null)
             return false;
         
@@ -54,6 +54,7 @@ public class Espectadores extends Dao {
         cmd = conn.prepareStatement(VERIFICA_USUARIO);
         
         cmd.setString(1, email);
+        cmd.setString(2, senha);
         
         ResultSet rs = cmd.executeQuery();
         

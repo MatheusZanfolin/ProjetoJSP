@@ -52,7 +52,7 @@ public class BancoDeDados {
             System.out.println();
             System.out.println();
             
-            boolean cadastrado = Espectadores.isCadastrado("joao");
+            boolean cadastrado = Espectadores.isCadastrado("joao", "123456");
             
             System.out.println("João " + (cadastrado ? "está cadastrado" : "não está cadastrado"));
             

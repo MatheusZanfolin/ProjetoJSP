@@ -11,17 +11,21 @@ package DBO;
  */
 public class Estado implements Cloneable, Comparable<Estado> {
     private int    codEstado;
-    private String nome;
+    private String nome = "";
     
-    public Estado(int codEstado, String nome) throws Exception {
-        if (codEstado < 1)
-            throw new Exception("Estado: inicialização com código de estado inválido.");
-        
-        if (nome == null)
-            throw new Exception("Estado: inicialização com nome nulo.");
-        
+    public Estado(){}
+    
+    public Estado(int codEstado, String nome) throws Exception { 
         this.codEstado = codEstado;
         this.nome      = nome;
+    }
+    
+    public void validar () throws Exception{
+        if (codEstado < 1)
+            throw new Exception("Código do estado inválido.");
+        
+        if (nome == null)
+            throw new Exception("Nome do estado nulo.");
     }
     
     public Estado(Estado original) throws Exception {

@@ -5,6 +5,9 @@
  */
 package web.crud;
 
+import DAO.Espectadores;
+import DBO.Espectador;
+import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,24 +16,31 @@ import javax.servlet.http.HttpServletResponse;
  * @author u14187
  */
 public class Login extends Crud{
-    
+    private Espectador espectador = new Espectador();
     public Login(HttpServletRequest req, HttpServletResponse resp) {
         super(req, resp);
+
     }
     
     public void cadastrar(){
         encaminhar("ServletCadastro");
     }
     
-    public void entrar(){
+    public void entrar() throws SQLException{
         request.setAttribute("passo", 0);
-        encaminhar("content/jsp/index.jsp");
+        if (Espectadores.isCadastrado(paramString("email"), paramString("senha"))){
+            encaminhar("content/jsp/index.jsp");
+        }
+        else{
+            request.setAttribute("erro", "Usuário ou senha inválido(s)!");
+            encaminhar("content/jsp/login.jsp");
+        }
     }
     
 
 
     @Override
-    public void saidaPadrao() {
+    public void saidaPadrao(Exception e) {
         encaminhar("content/jsp/login.jsp");
     }
 }

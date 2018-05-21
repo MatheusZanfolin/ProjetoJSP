@@ -11,3 +11,7 @@ body{
     background-color: #32383e;
     font-weight: bold;
 }
+
+.alert{
+    margin: 0;
+}

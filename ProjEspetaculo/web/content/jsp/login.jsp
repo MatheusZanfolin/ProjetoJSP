@@ -102,21 +102,6 @@ span.psw {
     background-color: #32383e;
 }
 
-/* Add Zoom Animation */
-.animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
-}
-    
-@keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
-}
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
@@ -135,11 +120,15 @@ span.psw {
 
 <div id="id01" class="modal">
     <form class="modal-content animate" action="/ProjEspetaculo/ServletLogin" method="POST">
+        
     <div class="container">
-      <label for="uname"><b>Usuário</b></label>
-      <input type="text" placeholder="Digite seu usuário" name="usuario">
+        <div style="display: ${empty erro ? 'none' : 'block'}">
+            ${erro}
+        </div>
+      <label for="usuario"><b>Email</b></label>
+      <input type="text" placeholder="Digite seu usuário" name="email">
 
-      <label for="psw"><b>Senha</b></label>
+      <label for="senha"><b>Senha</b></label>
       <input type="password" placeholder="Digite sua senha" name="senha">
         
     </div>
