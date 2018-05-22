@@ -44,14 +44,13 @@ public class ServletAssentos extends HttpServlet {
                 url = "/ServletCompra";
             break;
             case "voltar":
-                url = "/content/jsp/index.jsp";
+                url = "./ServletEspetaculos";
                 request.setAttribute("passo", 3);
             break;
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-        dispatcher.forward(request, response);  
-        
+        dispatcher.include(request, response);       
  
     }
 

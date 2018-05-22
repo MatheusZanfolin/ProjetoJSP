@@ -6,8 +6,11 @@
 package web.crud;
 
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 import java.sql.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +26,12 @@ public abstract class Crud {
     public Crud(HttpServletRequest req, HttpServletResponse resp){
         this.request = req;
         this.response = resp;
+        try {
+            this.request.setCharacterEncoding("UTF-8");
+            response.setContentType("text/html;charset=UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Crud.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     protected String paramString(String nome){
@@ -58,7 +67,8 @@ public abstract class Crud {
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 
         try {  
-            dispatcher.include(request, response);
+  
+            dispatcher.forward(request, response);
 
         } catch(Exception e){
         }

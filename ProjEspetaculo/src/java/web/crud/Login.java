@@ -29,7 +29,8 @@ public class Login extends Crud{
     public void entrar() throws SQLException{
         request.setAttribute("passo", 0);
         if (Espectadores.isCadastrado(paramString("email"), paramString("senha"))){
-            encaminhar("content/jsp/index.jsp");
+            request.getSession().setAttribute("espectador", espectador);
+            encaminhar("/ServletEspetaculos");
         }
         else{
             request.setAttribute("erro", "Usuário ou senha inválido(s)!");

@@ -18,6 +18,11 @@ public class Espetaculo implements Cloneable, Comparable<Espetaculo> {
     private int         classificacao;
     private ArrayList<Timestamp> datasApresentacao;
     
+    public Espetaculo(){
+        this.nome = "";
+        this.datasApresentacao = new ArrayList<>();     
+    }
+    
     public Espetaculo(int codEspetaculo, String nome, int classificacao, ArrayList<Timestamp> datasApresentacao) throws Exception {
         if (codEspetaculo < 1)
             throw new Exception("Espetaculo: inicialização com código de estado inválido.");

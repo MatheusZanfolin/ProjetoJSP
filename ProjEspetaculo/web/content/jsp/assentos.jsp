@@ -360,7 +360,7 @@
                       </svg>
                       <br/><br/>
                     <div class="row container">
-                        <button type="submit" class="btn btn-light" name="operation" value="voltar">Anterior</button>&nbsp
+                       <!-- <button type="submit" class="btn btn-light" name="operation" value="voltar">Anterior</button>&nbsp-->
                         <button type="submit" class="btn btn-light" name="operation" value="comprar" id ="btnComprar">Comprar</button>
                     </div>  
                 </div>

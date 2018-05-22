@@ -4,6 +4,7 @@
     Author     : Work
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -30,46 +31,48 @@
             "container-ingresso"
         ];
 
-        let contador = ${passo};
+        let contador =  ${espetaculos.passo};
 
-        anterior = () => {
+        function anterior () {
             if (contador > 0){
                 contador --;
             }
             mudarPagina();
         };
-        proximo = () => {
+        
+        function proximo() {
             if (contador < (containers.length - 1)){
                 contador ++;
             }
             mudarPagina();
-        };
+        }
 
-        mudarPagina = () => {
+        function mudarPagina() {
             for (i = 0; i < containers.length; i++){
                 document.getElementById(containers[i]).style.display = 
                     i === contador ? 'block' : 'none';
             }
-        };
+        }
     </script>
 </head>
 
 <body onload="mudarPagina()">
-    <form action="/ProjEspetaculo/ServletAssentos">
+    <form action="/ProjEspetaculo/ServletEspetaculos" method="POST">
         <div class="card" id="container-espetaculo">
             <div class="card-header">
                 <span class="number-title">1</span>- Escolha uma Espetáculo
             </div>
             <div class="card-body">
-                <select class="form-control">
-                    <option>IMPROVÁVEL com a Cia Barbixas, 14 ANOS</option>
-                    <option>ALICE NO PAÍS DAS MARAVILHAS, LIVRE</option>
-                    <option>O QUEBRA NOZES, 10 ANOS</option>
+                <select class="form-control" name="espetaculo" value="${empty espetaculos.espetaculo.codEspetaculo}">
+                    <option value="0">Selecione um Espetáculo</option>
+                    <c:forEach items="${espetaculos.listaEspetaculos}" var="item">
+                        <option value="${item.codEspetaculo}">${item.nome}</option>
+                    </c:forEach>
                 </select>
                 <br/>
                 <div class="row container">
                     <button type="button" onclick="anterior()" class="btn btn-dark" disabled>Anterior</button>&nbsp
-                    <button type="button" onclick="proximo()" class="btn btn-dark" >Próximo</button>
+                    <button type="submit" class="btn btn-dark" name="operation" value="selecionarEspetaculos">Próximo</button>
                 </div>  
             </div>
 
@@ -81,7 +84,12 @@
                 <span class="number-title">2</span> - Escolha uma data abaixo
             </div>
             <div class="card-body">
-                <input  class="form-control" type="date" />
+                <select class="form-control" name="dtEspetaculo" >
+                    <option value="0">Selecione uma Data</option>
+                    <c:forEach items="${espetaculos.espetaculo.datasApresentacao}" var="data" varStatus="indice">
+                        <option value="${indice}">${data.toString()}</option>
+                    </c:forEach>
+                </select>
                 <br/>
                 <div class="row container">
                     <button type="button" onclick="anterior()" class="btn btn-dark">Anterior</button>&nbsp
