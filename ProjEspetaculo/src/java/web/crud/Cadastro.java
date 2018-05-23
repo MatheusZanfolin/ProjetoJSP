@@ -6,8 +6,10 @@
 package web.crud;
 
 import DAO.Espectadores;
+import DAO.Estados;
 import DBO.Espectador;
 import DBO.Estado;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -36,12 +38,16 @@ public class Cadastro extends Crud{
                 paramString("complemento"),
                 paramString("bairro"),
                 paramString("cidade"), 
-                new Estado(paramInt("estado"), "")
+                new Estado(paramInt("estados"), "")
             );
+            
+            List<Estado> listaEstados = Estados.getEstados();
+            request.setAttribute("listaEstados", listaEstados);
+            
         }catch(Exception e){
             encaminhar("login");
         }
-    }
+    }    
     
     public void salvar() throws Exception{
         request.setAttribute("espectador", espectador);

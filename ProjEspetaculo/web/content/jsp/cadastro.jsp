@@ -4,6 +4,7 @@
     Author     : Work
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -48,7 +49,7 @@
         mudarPagina = () => {
             for (i = 0; i < containers.length; i++){
                 document.getElementById(containers[i]).style.display = 
-                    i == contador ? 'block' : 'none';
+                    i === contador ? 'block' : 'none';
             }
         };
     </script>
@@ -149,11 +150,13 @@
                         <div class="col">
                             <label for="estado">Estado*</label>
                             <select id="estado" class="form-control" name="estados" value="${espectador.estado}" required>
-                                <option>São Paulo</option>
-                                <option>Mato Grosso</option>
-                                <option>Bahia</option>
+                                <c:forEach items="${listaEstados}" var="estadoAtual">
+                                    <option value="${estadoAtual.codEstado}">${estadoAtual.nome}</option>
+                                </c:forEach>                               
                             </select>
+                                
                         </div>
+                        
                     </div>   
                     <br/>
                     <div class="row container">
