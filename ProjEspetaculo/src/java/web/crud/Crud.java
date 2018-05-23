@@ -9,6 +9,7 @@ package web.crud;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -32,6 +33,15 @@ public abstract class Crud {
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(Crud.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    protected Timestamp paramTimestamp(String nome){
+       try{
+           String valor = request.getParameter(nome);
+           return valor == null ? null : Timestamp.valueOf(valor);
+       }catch(Exception e){
+           return null;
+       }
     }
     
     protected String paramString(String nome){

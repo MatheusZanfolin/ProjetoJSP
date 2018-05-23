@@ -6,6 +6,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.time.format.DateTimeFormatter" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -27,7 +28,7 @@
         const containers = [
             "container-espetaculo",
             "container-data",
-            "container-horario",
+     //     "container-horario",
             "container-ingresso"
         ];
 
@@ -93,11 +94,11 @@
                 <br/>
                 <div class="row container">
                     <button type="button" onclick="anterior()" class="btn btn-dark">Anterior</button>&nbsp
-                    <button type="button" onclick="proximo()" class="btn btn-dark">Próximo</button>
+                    <button type="submit" name="operation" value="selecionarDtEspetaculo+" class="btn btn-dark">Próximo</button>
                 </div> 
             </div>
         </div>
-        <div class="card"  id="container-horario">
+        <!--<div class="card"  id="container-horario">
             <div class="card-header">
                 <span class="number-title">3</span> - Escolha o horário
             </div>
@@ -116,22 +117,10 @@
                     <button type="button" onclick="proximo()" class="btn btn-dark">Próximo</button>
                 </div> 
             </div> 
-        </div>
-    <!--    <div class="card">
-            <div class="card-header">
-                <span class="number-title">4</span> - Escolha o setor
-            </div>
-            <div class="card-body">
-                <select class=".form-control">
-                    <option>SETOR A</option>
-                    <option>SETOR B</option>
-                    <option>MEZANINO</option>
-                </select>
-            </div>
         </div> -->
         <div class="card"  id="container-ingresso">
             <div class="card-header">
-                <span class="number-title">4</span> - Escolha a quantidade de ingressos
+                <span class="number-title">3</span> - Escolha a quantidade de ingressos
             </div>
             <div class="card-body">
                 <div>

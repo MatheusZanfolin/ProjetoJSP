@@ -6,7 +6,11 @@
 package web.crud;
 
 import DAO.Espetaculos;
+import DAO.Ingressos;
 import DBO.Espetaculo;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
@@ -20,17 +24,19 @@ public class EspetaculosCrud extends Crud{
     int passo = 0;
 
     List<Espetaculo> listaEspetaculos;
+    Timestamp dataEspetaculo;
     Espetaculo espetaculo = new Espetaculo();
     
     public EspetaculosCrud(HttpServletRequest req, HttpServletResponse resp) {
         super(req, resp);     
         try{
             this.listaEspetaculos = Espetaculos.getEspetaculos();
-            espetaculo = getEspetaculoSelecionado();
+            espetaculo = getEspetaculoSelecionado();                  
         }catch (Exception e){
             
         }
     }
+    
     private Espetaculo getEspetaculoSelecionado(){
         List<Espetaculo> espetaculoSelecionado = listaEspetaculos.stream()
                 .filter(esp -> esp.getCodEspetaculo() == paramInt("espetaculo"))
@@ -44,10 +50,17 @@ public class EspetaculosCrud extends Crud{
     public void selecionarEspetaculos(){
         if (espetaculo.getCodEspetaculo() != 0){            
             passo = 1;
+        } 
+        saidaPadrao(null);
+    }
+    
+    public void selecionarDtEspetaculo() throws Exception{
+        dataEspetaculo = paramTimestamp("dtEspetaculo");
+        if (dataEspetaculo != null){
+            passo = 2;        
+            int quantos = Ingressos.quantosIngressos(dataEspetaculo);
+            request.setAttribute("quantosIngressos", quantos);
         }
-        
-        
-        
         saidaPadrao(null);
     }
 
