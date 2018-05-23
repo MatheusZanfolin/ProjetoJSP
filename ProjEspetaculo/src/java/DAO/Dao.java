@@ -66,7 +66,7 @@ public class Dao {
 
         try
         {
-            conn = DriverManager.getConnection ("jdbc:sqlserver://regulus:1433;databasename=JSP1RB16189", "JSP1RB16189", "JSP1RB16189");
+            conn = DriverManager.getConnection ("jdbc:sqlserver://regulus.cotuca.unicamp.br:1433;databasename=JSP1RB16189", "JSP1RB16189", "JSP1RB16189");
         }
         catch (SQLException e)
         {
