@@ -95,6 +95,7 @@ public abstract class Crud {
                 throw new Exception("Erro Interno");
             }
         } catch (Exception e){
+            e.printStackTrace();
             saidaPadrao(e);
         }
         
