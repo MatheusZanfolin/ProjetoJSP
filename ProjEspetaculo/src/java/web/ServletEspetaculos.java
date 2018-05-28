@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import web.crud.EspetaculosCrud;
+import web.crud.EspetaculosBean;
 
 /**
  *
@@ -24,7 +24,7 @@ public class ServletEspetaculos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        EspetaculosCrud espetaculos = new EspetaculosCrud(request, response);
+        EspetaculosBean espetaculos = new EspetaculosBean(request, response);
         espetaculos.execute(request.getParameter("operation"));   
     }
 

@@ -49,6 +49,11 @@ public abstract class Crud {
         return valor == null ? "" : valor;
     }
     
+    protected String paramJson(String nome){
+        String valor = request.getParameter(nome);
+        return valor == null ? "{}" : valor;
+    }
+    
     protected int paramInt(String nome){
         try{
             String valor = request.getParameter(nome);

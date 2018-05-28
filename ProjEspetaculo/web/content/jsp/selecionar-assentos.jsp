@@ -55,16 +55,10 @@
         }
     </style>
     <script>
-        var assentos = {
-            1 : "assento-ocupado",
-            2 : "assento-ocupado",
-            30 : "assento-ocupado",
-            34 : "assento-ocupado",
-            22 : "assento-ocupado",
-        };
+        var assentos = ${empty bean ? 0 : bean.mapaAssentosJson};
         
         var total = 34;
-        var qtdEscolhida = 3;
+        var qtdEscolhida = ${empty bean ? 0 : bean.compra.qtdAssentos};
         var selecionados = 0;
         var mensagem = "";
 
@@ -93,7 +87,6 @@
         }
         function onBancoClick(e){
             var count = 0;
-            console.log(assentos);
 
             for (var i = 0; i < total; i++){
                 if (assentos[i] === "assento-selecionado"){
@@ -104,8 +97,7 @@
             var classe = e.className.baseVal;
 
             if (classe.includes("assento-disponivel")){
-                if (count >= qtdEscolhida){
-                    console.log("aqui");             
+                if (count >= qtdEscolhida){           
                     atualizarTela();
                     return false;
                 }
@@ -119,15 +111,21 @@
                 selecionados --;
             }
             
-
+            salvar();
             atualizarTela();
+        }
+        
+        function salvar(){
+            var input = document.getElementById("mapaAssentos");
+            input.value = JSON.stringify(assentos);
+            
         }
     </script>
 </head>
-<body onload="atualizarTela()">
-    <form action="/ProjEspetaculo/ServletAssentos">
-        <div style=" width:100%">
-            
+<body onload="atualizarTela()" >
+    <form action="/ProjEspetaculo/ServletAssentos">       
+        <input hidden="" id="mapaAssentos" name="mapaAssentos"/>
+        <div style=" width:100%">            
             <div class="card"  id="container-assento"> 
                 <div class="card-header">
                     <span class="number-title">5</span> - Escolha seu assento
@@ -361,7 +359,7 @@
                       <br/><br/>
                     <div class="row container">
                        <!-- <button type="submit" class="btn btn-light" name="operation" value="voltar">Anterior</button>&nbsp-->
-                        <button type="submit" class="btn btn-light" name="operation" value="comprar" id ="btnComprar">Comprar</button>
+                       <button type="submit" onclick="salvar()" class="btn btn-light" name="operation" value="comprar" id ="btnComprar">Comprar</button>
                     </div>  
                 </div>
             </div>

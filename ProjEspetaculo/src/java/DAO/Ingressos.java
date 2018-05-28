@@ -16,7 +16,7 @@ import java.sql.Timestamp;
  * @author u16189
  */
 public class Ingressos extends Dao {
-    private final static String QUANTOS_INGRESSOS = "SELECT qtde FROM QtdeIngressoApresentacao WHERE dataEspetaculo = ?";
+    private final static String QUANTOS_INGRESSOS = "SELECT qtdeIngressos FROM QtdeIngressoApresentacao WHERE dataEspetaculo = ?";
     private final static String COMPRAR_INGRESSO  = "{call compraIngresso_sp(?, ?, ?, ?)}";
     
     public Ingressos() throws Exception {
@@ -47,7 +47,7 @@ public class Ingressos extends Dao {
         ResultSet rs = cmd.executeQuery();
         
         if (rs.next())
-            quantos = rs.getInt("qtde");
+            quantos = rs.getInt("qtdeIngressos");
         else
             throw new Exception("Ingressos: verificação da quantidade total de ingressos não encontrou nenhum espetáculo na data apresentada");
         

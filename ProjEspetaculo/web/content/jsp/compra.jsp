@@ -4,6 +4,7 @@
     Author     : Work
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -42,39 +43,34 @@
                                     <td scope="col">Ingresso/Setor</td>
                                     <td scope="col">Quantidade</td>
                                     <td scope="col">Valor</td>
-                                    <td scope="col">Taxa de Conveniência</td>
-                                    <td scope="col">
-                                    </td>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        IMPROVÁVEL com a Cia Barbixas - 14/04/2018 21:00 
-                                        SAB - Inteira/Mezanino, Ingresso 0507
-                                    </td>
-                                    <td>1</td>
-                                    <td>R$60,00</td>
-                                    <td>R$15,00</td>
-                                    <td>
-                                        <button type="button" class="btn btn-link">
-                                            Excluir
-                                        </button>
-                                    </td>
-                                </tr>
+                              <c:forEach items="${bean.compra.listaResumoCompra}" var="resumo">
+                                    <tr>
+                                        <td>
+                                            ${resumo.ingressoSetor}
+                                        </td>
+                                        <td>
+                                            ${resumo.quantidade}
+                                        </td>
+                                        <td>
+                                            ${resumo.valorFormatado}
+                                        </td>
+                                    </tr>
+                                </c:forEach>                               
                             </tbody>
                             <tfoot class="table-dark">
                                 <tr>
-                                    <td colspan="4"></td>      
-                                    <td>Total: R$75,00</td>
+                                    <td colspan="2">Taxa de Conveniência: ${bean.compra.convenienciaFormatado}</td>      
+                                    <td colspan="2">Total: ${bean.compra.totalFormatado}</td>
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
                     <br/>
                     <div class="row container">
-                        <button type="submit" style="margin-left:-12pt" class="btn btn-dark" name="operation" value="voltar">Voltar</button>&nbsp
-                        <button type="button"  class="btn btn-dark">Finalizar</button>
+                        <button type="submit"  name="operation" value="finalizar" class="btn btn-dark">Finalizar</button>
                     </div>               
                 </div>
             </div>

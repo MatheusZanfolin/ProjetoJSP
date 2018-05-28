@@ -65,7 +65,7 @@ public class BancoDeDados {
             
             int codAssentoParaOcupar = 2;
             
-            int registrado = Ingressos.registrarIngresso(tadeu.getEmail(), Espetaculos.getEspetaculos().get(0).getDatasApresentacao().get(0), TipoIngresso.Inteira, Assentos.getAssentos().get(codAssentoParaOcupar - 1).getCodAssento());
+            int registrado = Ingressos.registrarIngresso(tadeu.getEmail(), Espetaculos.getEspetaculos().get(0).getDatasApresentacao().get(0), TipoIngresso.INTEIRA, Assentos.getAssentos().get(codAssentoParaOcupar - 1).getCodAssento());
             
             System.out.println("Tadeu " + (registrado <= 0 ? "não " : "") + "comprou um ingresso!");
             

@@ -10,19 +10,36 @@ package DBO;
  * @author u16189
  */
 public enum TipoIngresso {
-    Inteira     (1),
-    Idoso       (2),
-    Estudante   (3),    
-    DoadorSangue(4),
-    Jornalista  (5);
+    INTEIRA      (1, "Inteira", 70),
+    IDOSO        (2, "Idoso", 35),
+    ESTUDANTE    (3, "Estudante", 35),    
+    DOADOR_SANGUE(4, "Doador de Sangue", 35),
+    JORNALISTA   (5, "Jornalista", 35);
    
-    int codTipo;
+    private final int codTipo;
+    private final String label;
+    private final double valor;
             
-    TipoIngresso(int codTipo) {
+    TipoIngresso(int codTipo, String label, double valor) {
         this.codTipo = codTipo;
+        this.label = label;
+        this.valor = valor;
     }
     
     public int getCodTipo() {
         return this.codTipo;
     }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+    
+    public String getValorFormatado(){
+        return String.format("R$ %.2f", valor);
+    }
+    
 }

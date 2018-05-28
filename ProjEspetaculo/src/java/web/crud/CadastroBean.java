@@ -18,10 +18,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Work
  */
-public class Cadastro extends Crud{
+public class CadastroBean extends Crud{
     Espectador espectador = new Espectador();
     
-    public Cadastro(HttpServletRequest request, HttpServletResponse response){
+    public CadastroBean(HttpServletRequest request, HttpServletResponse response){
         super(request, response);
         try{
             espectador = new Espectador(

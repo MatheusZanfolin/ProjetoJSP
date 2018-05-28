@@ -76,7 +76,7 @@ public class Ingresso {
     
     public double getValor() {
         switch (this.tipo) {
-            case Inteira:
+            case INTEIRA:
                 return 70;
                 
             default:
@@ -86,7 +86,7 @@ public class Ingresso {
     
     public static double getValor(TipoIngresso t) {
         switch (t) {
-            case Inteira:
+            case INTEIRA:
                 return 70;
                 
             default:

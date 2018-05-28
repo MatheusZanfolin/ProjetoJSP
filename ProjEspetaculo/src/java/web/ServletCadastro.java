@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import web.crud.Cadastro;
+import web.crud.CadastroBean;
 
 /**
  *
@@ -34,7 +34,7 @@ public class ServletCadastro extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
        
-        Cadastro cadastro = new Cadastro(request, response);
+        CadastroBean cadastro = new CadastroBean(request, response);
         cadastro.execute(request.getParameter("operation"));
     }
 
