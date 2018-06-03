@@ -27,8 +27,10 @@
     </head>
 
     <body>
+        <jsp:include page="./menu.jsp"/>
         <form action="/ProjEspetaculo/ServletEspetaculos" method="POST">
             <c:if test="${not empty bean}">
+                <input type="hidden" value="${bean.passo}" id="input-passo"/>
                 <input type="hidden" name="formEspetaculo" value="${bean.compra.espetaculo.codEspetaculo}"/>
                 <input type="hidden" name="formQtdIngressosDisponiveis" value="${bean.qtdIngressosDisponiveis}"/>
 
@@ -43,16 +45,22 @@
                             <span class="number-title">1</span>- Escolha uma Espetáculo
                         </div>
                         <div class="card-body">
-                            <select class="form-control" name="espetaculo" value="${empty bean.compra.espetaculo ? 0 : bean.compra.espetaculo.codEspetaculo}">
-                                <option value="${bean.codEspetaculoSelecionado}">Selecione um Espetáculo</option>
-                                <c:forEach items="${bean.listaEspetaculos}" var="item">
-                                    <option value="${item.codEspetaculo}">${item.nome}</option>
-                                </c:forEach>
-                            </select>
-                            <br/>
-                            <div class="row container">               
-                                <button type="submit" class="btn btn-dark" name="operation" value="selecionarEspetaculos">Próximo</button>
-                            </div>  
+                            
+                            <div style="display: ${bean.passo == 0 ? 'block' : 'none'}">
+                                <select class="form-control" name="espetaculo" value="${empty bean.compra.espetaculo ? 0 : bean.compra.espetaculo.codEspetaculo}">
+                                    <option value="${bean.codEspetaculoSelecionado}">Selecione um Espetáculo</option>
+                                    <c:forEach items="${bean.listaEspetaculos}" var="item">
+                                        <option value="${item.codEspetaculo}">${item.nome}</option>
+                                    </c:forEach>
+                                </select>
+                                <br/>
+                                <div class="row container">               
+                                    <button type="submit" class="btn btn-dark" name="operation" value="selecionarEspetaculos">Próximo</button>
+                                </div>  
+                            </div>
+                            <c:if test="${bean.passo != 0}">
+                                ${bean.compra.espetaculo}
+                            </c:if>                       
                         </div>
                     </div>
                 </c:if>                        
@@ -62,16 +70,21 @@
                             <span class="number-title">2</span> - Escolha uma data abaixo
                         </div>
                         <div class="card-body">
-                            <select class="form-control" name="dtEspetaculo" value="${bean.compra.dataEspetaculo}" >
-                                <option value="${bean.compra.dataEspetaculo}">Selecione uma Data</option>
-                                <c:forEach items="${bean.compra.espetaculo.datasApresentacao}" var="data">
-                                    <option value="${data.toString()}">${data.toString()}</option>
-                                </c:forEach>
-                            </select>
-                            <br/>
-                            <div class="row container">                    
-                                <button type="submit" name="operation" value="selecionarDtEspetaculo" class="btn btn-dark">Próximo</button>
-                            </div> 
+                            <div style="display: ${bean.passo == 1 ? 'block' : 'none'}">
+                                <select class="form-control" name="dtEspetaculo" value="${bean.compra.dataEspetaculo}" >
+                                    <option value="${bean.compra.dataEspetaculo}">Selecione uma Data</option>
+                                    <c:forEach items="${bean.compra.espetaculo.datasApresentacao}" var="data">
+                                        <option value="${data.toString()}">${data.toString()}</option>
+                                    </c:forEach>
+                                </select>
+                                <br/>
+                                <div class="row container">                    
+                                    <button type="submit" name="operation" value="selecionarDtEspetaculo" class="btn btn-dark">Próximo</button>
+                                </div> 
+                            </div>
+                            <c:if test="${bean.passo != 1}">
+                                ${bean.compra.dataEspetaculo}
+                            </c:if>
                         </div>
                     </div>
                 </c:if>

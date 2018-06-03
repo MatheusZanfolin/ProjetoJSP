@@ -25,7 +25,7 @@ public class AssentosBean extends Crud{
     
     private HashMap<String, String> mapaAssentos = new HashMap();
     public AssentosBean(HttpServletRequest req, HttpServletResponse resp) {
-        super(req, resp);
+        super(req, resp, true);
         try{
             compra = (Compra) req.getSession().getAttribute("compra");
             ArrayList<Assento> listaAssentos = Assentos.getAssentos();

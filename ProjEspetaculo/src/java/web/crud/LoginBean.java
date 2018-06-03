@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginBean extends Crud{
     private Espectador espectador = new Espectador();
     public LoginBean(HttpServletRequest req, HttpServletResponse resp) {
-        super(req, resp);
+        super(req, resp, false);
 
     }
     

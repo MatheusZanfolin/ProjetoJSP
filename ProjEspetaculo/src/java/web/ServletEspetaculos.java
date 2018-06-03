@@ -22,6 +22,12 @@ import web.crud.EspetaculosBean;
 public class ServletEspetaculos extends HttpServlet {
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doPost(req, resp);
+    }
+
+    
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         EspetaculosBean espetaculos = new EspetaculosBean(request, response);

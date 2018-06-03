@@ -34,6 +34,11 @@ public class ServletLogin extends HttpServlet {
         login.execute(request.getParameter("operation"));      
     }
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doPost(req, resp);
+    }       
+
     /**
      * Returns a short description of the servlet.
      *

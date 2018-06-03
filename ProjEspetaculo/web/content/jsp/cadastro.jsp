@@ -22,39 +22,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <title>Cadastro</title>
-
-    <script>
-        const containers = [
-            "container-pessoal",
-            "container-endereco",
-            "container-conta"
-        ];
-
-        let contador =  ${contador};
-
-        anterior = () => {
-            if (contador > 0){
-                contador --;
-            }
-            mudarPagina();
-        };
-        
-        proximo = () => {
-            if (contador < (containers.length - 1)){
-                contador ++;
-            }
-            mudarPagina();
-        };
-
-        mudarPagina = () => {
-            for (i = 0; i < containers.length; i++){
-                document.getElementById(containers[i]).style.display = 
-                    i === contador ? 'block' : 'none';
-            }
-        };
-    </script>
 </head>
-<body onload="mudarPagina();">
+<body>
     <form action="/ProjEspetaculo/ServletCadastro" method="POST">
         <div class="card" style="display: ${empty erro ? 'none' : 'block'}">
             <div class="alert alert-danger">
@@ -82,7 +51,7 @@
                     <div class="row">
                         <div class="col-sm">
                             <label for="">CPF*</label>
-                            <input type="text" class="form-control" id="" name="cpf" required/>
+                            <input type="text" class="form-control" id="" name="cpf" value="${espectador.cpf}"/>
                         </div>
                         <div class="col-sm">
                             <label for="">Sexo*</label><br/>
@@ -105,11 +74,6 @@
                             <label for="">Telefone*</label>
                             <input type="number"  name="telefone" class="form-control" value="${espectador.telefone}" required/>
                         </div>
-                    </div>
-                    <br/>
-                    <div class="row container">
-                        <button type="button" onclick="anterior()" class="btn btn-dark" disabled>Anterior</button>&nbsp
-                        <button type="button" onclick="proximo()" class="btn btn-dark">Próximo</button>
                     </div>
                 </div>
             </div>
@@ -135,7 +99,7 @@
                         </div>
                         <div class="col-xl">
                             <label for="">Complemento</label>
-                            <input type="text" class="form-control"  name="complemento" value="${espectador.complemento}" required/>
+                            <input type="text" class="form-control"  name="complemento" value="${espectador.complemento}"/>
                         </div>
                     </div>
                     <div class="row">
@@ -157,12 +121,7 @@
                                 
                         </div>
                         
-                    </div>   
-                    <br/>
-                    <div class="row container">
-                        <button type="button" onclick="anterior()" class="btn btn-dark">Anterior</button>&nbsp
-                        <button type="button" onclick="proximo()" class="btn btn-dark">Próximo</button>
-                    </div>                         
+                    </div>                       
                 </div>
             </div>
         </div>
@@ -180,7 +139,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="">Senha*</label>
-                            <input type="password" class="form-control"name="senha" value="${espectador.senha}" required/>
+                            <input type="password" class="form-control"name="senha" value="" required/>
                         </div>
                         <div class="col-md-6">
                             <label for="">Confirmar senha*</label>
@@ -188,8 +147,7 @@
                         </div>
                     </div> 
                     <br/>
-                    <div class="row container">
-                        <button type="button" onclick="anterior()" class="btn btn-dark">Anterior</button>&nbsp
+                    <div class="row container">                       
                         <button type="submit" name="operation" value="salvar" class="btn btn-dark">Finalizar</button>
                     </div>               
                 </div>

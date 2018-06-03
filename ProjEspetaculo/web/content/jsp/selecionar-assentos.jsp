@@ -123,6 +123,7 @@
     </script>
 </head>
 <body onload="atualizarTela()" >
+    <jsp:include page="./menu.jsp"/>
     <form action="/ProjEspetaculo/ServletAssentos">       
         <input hidden="" id="mapaAssentos" name="mapaAssentos"/>
         <div style=" width:100%">            

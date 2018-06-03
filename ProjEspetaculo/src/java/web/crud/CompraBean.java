@@ -23,7 +23,7 @@ public class CompraBean extends Crud{
     private Compra compra;
     
     public CompraBean(HttpServletRequest req, HttpServletResponse resp) {
-        super(req, resp);
+        super(req, resp, true);
         compra = (Compra) req.getSession().getAttribute("compra");
     }
     

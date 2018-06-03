@@ -28,7 +28,7 @@ public class EspetaculosBean extends Crud{
     private Compra compra = new Compra();
     
     public EspetaculosBean(HttpServletRequest req, HttpServletResponse resp) {
-        super(req, resp);     
+        super(req, resp, true);     
         try{
             this.listaEspetaculos = Espetaculos.getEspetaculos();
             this.compra.setEspetaculo(getEspetaculoSelecionado()); 
@@ -40,9 +40,11 @@ public class EspetaculosBean extends Crud{
         }
     }
     
-    private Espetaculo getEspetaculoSelecionado(){
+    private Espetaculo getEspetaculoSelecionado(){        
+        final int codEspetaculo = paramInt("espetaculo") == 0 ?  paramInt("formEspetaculo") : paramInt("espetaculo");
+        
         List<Espetaculo> espetaculoSelecionado = listaEspetaculos.stream()
-                .filter(esp -> esp.getCodEspetaculo() == paramInt("espetaculo"))
+                .filter(esp -> esp.getCodEspetaculo() == codEspetaculo)
                 .collect(Collectors.toList());
         if (espetaculoSelecionado.size() > 0){
             return espetaculoSelecionado.get(0);

@@ -22,7 +22,7 @@ public class CadastroBean extends Crud{
     Espectador espectador = new Espectador();
     
     public CadastroBean(HttpServletRequest request, HttpServletResponse response){
-        super(request, response);
+        super(request, response, false);
         try{
             espectador = new Espectador(
                 paramString("email"),
@@ -50,9 +50,12 @@ public class CadastroBean extends Crud{
     }    
     
     public void salvar() throws Exception{
-        request.setAttribute("espectador", espectador);
+        if (Espectadores.isCadastrado(espectador.getEmail()))
+            throw new Exception ("Já existe um usuário para este email!");
+        
+        request.setAttribute("espectador", espectador);        
         Espectadores.inserirEspectador(this.espectador);
-        encaminhar("/ServletLogin");
+        encaminhar("/content/jsp/login.jsp");
     }
   
 

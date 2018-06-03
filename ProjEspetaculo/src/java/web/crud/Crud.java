@@ -6,6 +6,7 @@
 package web.crud;
 
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 import java.sql.Date;
@@ -24,14 +25,20 @@ public abstract class Crud {
     protected HttpServletRequest request;
     protected HttpServletResponse response;
 
-    public Crud(HttpServletRequest req, HttpServletResponse resp){
+    public Crud(HttpServletRequest req, HttpServletResponse resp, boolean filtrar){
         this.request = req;
         this.response = resp;
         try {
             this.request.setCharacterEncoding("UTF-8");
             response.setContentType("text/html;charset=UTF-8");
+            if (this.request.getSession().getAttribute("espectador") == null && filtrar){
+                response.sendRedirect("/ProjEspetaculo/content/jsp/login.jsp");
+            }
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(Crud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch (Exception e){
+            
         }
     }
     

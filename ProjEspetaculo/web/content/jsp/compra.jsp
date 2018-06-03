@@ -25,6 +25,7 @@
 
 </head>
 <body>
+    <jsp:include page="./menu.jsp"/>
     <form action="/ProjEspetaculo/ServletCompra" method="POST">
         <div id="container-conta" class="card">
             <div class="card-header">
